@@ -11,8 +11,8 @@ DEPLOY_SYNTAX = ///
   #{validSlug}                          # application name, from apps.json
   (?:\/([^\s]+))?                       # Branch or sha to deploy
   (?:\s+(?:to|in|on)\s+                 # http://i.imgur.com/3KqMoRi.gif
-  #{validSlug}                          # Environment to release to
-  (?:\/([^\s]+))?)?\s*                  # Host filter to try
+  #{validSlug}                          # Environment or Cluster to release to
+  (?:\/([^\s]+))?)?\s*                  # Host or Service filter to try
   (?:([cbdefghijklnrtuv]{32,64}|\d{6})?\s*)?$ # Optional Yubikey
 ///i
 
@@ -30,7 +30,7 @@ DEPLOYS_SYNTAX = ///
   #{validSlug}                    # application name, from apps.json
   (?:\/([^\s]+))?                 # Branch or sha to deploy
   (?:\s+(?:to|in|on)\s+           # http://i.imgur.com/3KqMoRi.gif
-  #{validSlug})?                  # Environment to release to
+  #{validSlug})?                  # Environment or Cluster to release to
 ///i
 
 exports.DeployPrefix   = scriptPrefix
