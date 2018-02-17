@@ -26,7 +26,7 @@ DEPLOY_SYNTAX = ///
 inflectedScriptPrefix = Inflection.pluralize(scriptPrefix)
 DEPLOYS_SYNTAX = ///
   (#{inflectedScriptPrefix})      # / prefix
-  \s+                             # hwhitespace
+  \s+                             # whitespace
   #{validSlug}                    # application name, from apps.json
   (?:\/([^\s]+))?                 # Branch or sha to deploy
   (?:\s+(?:to|in|on)\s+           # http://i.imgur.com/3KqMoRi.gif
