@@ -6,7 +6,7 @@
 #   hubot deploy:version - show the script version and node/environment info
 #   hubot deploy <app>/<branch> to <env>/<roles> - deploys <app>'s <branch> to the <env> environment's <roles> servers
 #   hubot deploy <app>/<branch> to <cluster>/<services> - deploys <app>'s <branch> to the <cluster>'s' <services> [AWS ECS]
-#   hubot deploys <app>/<branch> in <env|cluster> - Displays recent deployments for <app>'s <branch> in the <env|cluster> environment
+#   hubot deploys <app>/<branch> in <env|cluster> - Displays recent deployments for <app>'s <branch> in the <environment|cluster>
 #
 supported_tasks = [ DeployPrefix ]
 
