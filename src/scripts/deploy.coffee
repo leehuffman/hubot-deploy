@@ -6,7 +6,7 @@
 #   hubot deploy:version - show the script version and node/environment info
 #   hubot deploy <app>/<branch> to <env>/<roles> - deploys <app>'s <branch> to the <env> environment's <roles> servers
 #   hubot deploy <app>/<branch> to <cluster>/<services> - deploys <app>'s <branch> to the <cluster>'s' <services> [AWS ECS]
-#   hubot deploys <app>/<branch> in <env> - Displays recent deployments for <app>'s <branch> in the <env> environment
+#   hubot deploys <app>/<branch> in <env|cluster> - Displays recent deployments for <app>'s <branch> in the <env|cluster> environment
 #
 supported_tasks = [ DeployPrefix ]
 
@@ -77,7 +77,7 @@ module.exports = (robot) ->
       if robot.adapterName is "hipchat"
         if msg.envelope.user.reply_to?
           deployment.room = msg.envelope.user.reply_to
-          
+
       if robot.adapterName is "slack"
         deployment.user = user.name
         deployment.room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById(msg.message.user.room).name
