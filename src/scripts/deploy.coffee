@@ -129,8 +129,7 @@ module.exports = (robot) ->
 
     user = robot.brain.userForId msg.envelope.user.id
     if useIdentity
-      token = robot.identity.findToken(user), (err, token) ->
-        return handleTokenError(res, err) if err
+      token = robot.identity.findToken(user)
     else
       token = robot.vault.forUser(user).get(TokenForBrain)
       if token?
