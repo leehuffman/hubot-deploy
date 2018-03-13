@@ -28,6 +28,16 @@ defaultDeploymentEnvironment = () ->
 
 ###########################################################################
 module.exports = (robot) ->
+  # Setup hubot-github-identity – https://github.com/tombell/hubot-github-identity
+  useIdentity = process.env.HUBOT_GITHUB_IDENTITY?
+
+  handleTokenError = (res, err) ->
+    switch err.type
+      when 'redis'
+        res.reply "Oops: #{err}"
+      when 'github user'
+        res.reply "Sorry, you haven't told me your GitHub username."
+
   ###########################################################################
   # where can i deploy <app>
   #
