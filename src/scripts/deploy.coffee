@@ -128,9 +128,17 @@ module.exports = (robot) ->
       return
 
     user = robot.brain.userForId msg.envelope.user.id
-    token = robot.vault.forUser(user).get(TokenForBrain)
-    if token?
-      deployment.setUserToken(token)
+    if useIdentity
+      token = robot.identity.findToken(user), (err, token) ->
+        if err
+          handleTokenError(res, err)
+          return
+        else
+          token
+    else
+      token = robot.vault.forUser(user).get(TokenForBrain)
+      if token?
+        deployment.setUserToken(token)
 
     deployment.user   = user.id
     deployment.room   = msg.message.user.room
