@@ -35,7 +35,16 @@ module.exports = (robot) ->
   # deployment - The deployed app that matched up with the request.
   # formatter - A basic formatter for the deployments that should work everywhere even though it looks gross.
   robot.on "hubot_deploy_available_environments", (msg, deployment) ->
-    msg.send "#{deployment.name} can be deployed to #{deployment.environments.join(', ')}."
+    output  = "Environments for #{deployment.name}\n"
+    output += "-----------------------------------------------------------------\n"
+    output += Sprintf "%-15s\n", "Environment"
+    output += "-----------------------------------------------------------------\n"
+
+    for environment in deployment.environments
+      output += "#{environment}\n"
+    output += "-----------------------------------------------------------------\n"
+
+    msg.send output
 
   # An incoming webhook from GitHub for a deployment.
   #
